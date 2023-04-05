@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "notificationflyout-client-side-solution",
+    "id": "bf07190b-0203-4fc9-af24-abc06f5dae11",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.16.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "notificationflyout description"
+      },
+      "longDescription": {
+        "default": "notificationflyout description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "notificationflyout Feature",
+        "description": "The feature that activates elements of the notificationflyout solution.",
+        "id": "e8a4a756-7091-41f4-b463-d8f5a4bec469",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/notificationflyout.sppkg"
+  }
+}

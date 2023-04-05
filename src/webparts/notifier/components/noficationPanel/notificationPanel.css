@@ -1,0 +1,23 @@
+.notificationPanel{
+    background-color: white;
+    padding: 10px;
+    font-family:SegoeUI-SemiBold-final,Segoe UI Semibold,SegoeUI-Regular-final,Segoe UI,"Segoe UI Web (West European)",Segoe,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Tahoma,Helvetica,Arial,sans-serif;
+    font-weight: 600;
+}
+.panelHeader{
+    display: flex;
+    justify-content: end;
+    padding: 15px;
+}
+.noNotifications{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.notificationLink{
+    color: #0e7bd4;
+}
+.message{
+    font-size: 18px;
+}

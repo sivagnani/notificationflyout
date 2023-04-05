@@ -1,0 +1,16 @@
+.notificationPreferences{
+    font-family:SegoeUI-SemiBold-final,Segoe UI Semibold,SegoeUI-Regular-final,Segoe UI,"Segoe UI Web (West European)",Segoe,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Tahoma,Helvetica,Arial,sans-serif;
+    font-weight: 600;
+    padding: 20px;
+}
+.paddingBottom{
+    padding-bottom: 20px;
+}
+.option{
+    color:#7d8491 ;
+    font-size: 18px;
+}
+.myContent{
+    color: #121c4f;
+    font-size: 18px;
+}

@@ -1,0 +1,39 @@
+.notificationHeader{
+    background-color: #121c4f;
+    font-family:SegoeUI-SemiBold-final,Segoe UI Semibold,SegoeUI-Regular-final,Segoe UI,"Segoe UI Web (West European)",Segoe,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Tahoma,Helvetica,Arial,sans-serif;
+    font-weight: 600;
+    color: white;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    height: 30px;
+}
+.heading{
+    font-size: 20px;
+}
+.back{
+    display: inline;
+    color: white;
+    font-size: 30px;
+}
+#notificationCloseButton{
+    background-color: #121c4f;
+    padding: auto;
+    color:white;
+}
+.navs{
+    cursor: pointer;
+    font-size: 14px;
+}
+p{
+    margin: 0px;
+}
+button{
+    border:0px;
+}
+.close{
+    color: white;
+}

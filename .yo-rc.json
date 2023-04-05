@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.16.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.1",
+    "libraryName": "notificationflyout",
+    "libraryId": "bf07190b-0203-4fc9-af24-abc06f5dae11",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "notificationflyout",
+    "solutionShortDescription": "notificationflyout description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
