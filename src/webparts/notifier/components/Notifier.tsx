@@ -11,7 +11,7 @@ export default class Notifier extends React.Component<INotifierProps,INotifierSt
   constructor(props:INotifierProps){
     super(props);
     this.state={
-      isPreferences:true,
+      isPreferences:false,
     }
   }
   changePreferencesNavigation():void{
@@ -22,8 +22,8 @@ export default class Notifier extends React.Component<INotifierProps,INotifierSt
   public render(): React.ReactElement<INotifierProps> {
     return (
       <div>
-        <NotificationTrayHeader isNotificationTray={this.state.isPreferences} onPreferenceClick={()=>this.changePreferencesNavigation()}/>
-        <NotificationPanel isNotificationTray={this.state.isPreferences}/>
+        <NotificationTrayHeader isNotificationTray={!this.state.isPreferences} onPreferenceClick={()=>this.changePreferencesNavigation()}/>
+        <NotificationPanel isNotificationTray={!this.state.isPreferences}/>
 
         {/* <button disabled={!this.state.isPreferences} onClick={()=>this.changePreferencesNavigation()}>sample</button> */}
       </div>

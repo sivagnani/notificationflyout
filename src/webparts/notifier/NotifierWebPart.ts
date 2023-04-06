@@ -28,7 +28,7 @@ export default class NotifierWebPart extends BaseClientSideWebPart<INotifierWebP
 
   protected onInit(): Promise<void> {
     return this._getEnvironmentMessage().then(message => {
-      console.log("hi");
+      console.log("");
     });
   }
 
