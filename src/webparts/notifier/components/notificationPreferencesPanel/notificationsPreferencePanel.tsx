@@ -16,30 +16,39 @@ export default class NotificationPreferencePanel extends React.Component<INotifi
         this.service.getNotificationPreferences().then(preferences => {
             this.setState({
                 notificationOptions: preferences,
-            });
+            }
+            );
         })
     }
     render(): React.ReactNode {
         return (
             <div className="notificationPreferences">
-                <div className="paddingBottom">
+                <div className="marginBottom">
                     <p className="myContent">My Content</p>
                 </div>
-                <div className="paddingBottom">
+                <div className="marginBottom">
                     <p className="option">Send me notifications when:</p>
                 </div>
-                {this.state.notificationOptions.map((preferences) => {
-                    if(preferences.option==="My Content"){
-                        return <NotificationPreference preference={preferences}/>
-                    }
-                })
+                {
+                    this.state.notificationOptions
+                        .filter((option) => option.NotificationOption === "My Content")
+                        .map((option) => <NotificationPreference preference={option} />)
                 }
-                <hr className="paddingBottom" />
-                <div className="paddingBottom">
+                <hr className="marginBottom" />
+                <div className="marginBottom">
                     <p className="myContent">Social</p>
                 </div>
-                <div className="paddingBottom">
+                <div className="marginBottom">
                     <p className="option">Send me notifications when:</p>
+                </div>
+                {
+                    this.state.notificationOptions
+                        .filter((option) => option.NotificationOption === "Social")
+                        .map((option) => <NotificationPreference preference={option} />)
+                }
+                <div className="footer">
+                    <button className="footerButton save">Save</button>
+                    <button className="footerButton cancel">Cancel</button>
                 </div>
             </div>
         );

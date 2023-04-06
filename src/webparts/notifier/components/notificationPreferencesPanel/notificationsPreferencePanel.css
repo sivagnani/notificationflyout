@@ -3,8 +3,8 @@
     font-weight: 600;
     padding: 20px;
 }
-.paddingBottom{
-    padding-bottom: 20px;
+.marginBottom{
+    margin-bottom: 20px;
 }
 .option{
     color:#7d8491 ;
@@ -13,4 +13,25 @@
 .myContent{
     color: #121c4f;
     font-size: 18px;
+}
+.footer{
+    height: 50px;
+    display: flex;
+    justify-content: end;
+    background-color: #f3f3f3;
+    align-items: center;
+}
+.footerButton{
+    width: 80px;
+    margin-right: 10px;
+    height: 30px;
+    border: 1px solid #989898;
+}
+.save{
+    color: white;
+    background-color: #121c4f;
+}
+.cancel{
+    color: #989898;
+    background-color: white;
 }

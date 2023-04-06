@@ -15,7 +15,6 @@ export default class Notifier extends React.Component<INotifierProps,INotifierSt
     }
   }
   changePreferencesNavigation():void{
-    this.service.getNotificationPreferences();
     this.setState({
       isPreferences:!this.state.isPreferences,
     });
