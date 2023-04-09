@@ -1,6 +1,10 @@
+import { INotification } from "../../model";
+
 export interface INotificationPanelProps{
-    isNotificationTray:boolean;
+    newNotifications:INotification[];
+    onNotificationRead:(id:number)=>void;
+    updateNotifications:()=>void;
+    updateNotificationStatus:()=>void;
 }
 export interface INotificationPanelState{
-    
 }

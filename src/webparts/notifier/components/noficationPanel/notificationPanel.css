@@ -1,23 +1,34 @@
 .notificationPanel{
-    background-color: white;
     padding: 10px;
-    font-family:SegoeUI-SemiBold-final,Segoe UI Semibold,SegoeUI-Regular-final,Segoe UI,"Segoe UI Web (West European)",Segoe,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Tahoma,Helvetica,Arial,sans-serif;
+    font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
     font-weight: 600;
+    height: 530px;
+}
+.noNotificationsAvailable{
+    background-color: white;
+}
+.notificationsAvailable{
+    background-color: #f7f6f4;
 }
 .panelHeader{
     display: flex;
     justify-content: end;
-    padding: 15px;
+    padding: 0px 0px 10px 0px;
 }
 .noNotifications{
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    height: 70vh;
 }
 .notificationLink{
     color: #0e7bd4;
 }
 .message{
     font-size: 18px;
+    margin-bottom: 5px;
+}
+.errorImage{
+    width: 150px;
 }
