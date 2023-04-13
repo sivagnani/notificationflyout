@@ -25,4 +25,9 @@ export default class Services{
     updateNotificationsStatus(notifications:INotification[]):Promise<boolean>{
        return Promise.all(notifications.map((notification)=>this.context.lists.getByTitle('Notifications').items.getById(notification.Id).update(notification))).then(()=>true).catch(()=>false); 
     }
+    updateNotificationStatusAndGetNewNotification(notificationId:number):Promise<INotification[]>{
+        return this.context.lists.getByTitle('Notifications').items.getById(notificationId).update({IsRead:true}).then(()=>{
+            return this.getNewNotifications();
+        }); 
+     }
 }

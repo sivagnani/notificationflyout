@@ -20,12 +20,10 @@
 .notHaveAccess{
     color: #c8c6c4;
 }
-.custom-checkbox {
+.checkbox {
     width: 20px;
     height: 20px;
     position: relative;
-    -webkit-appearance: none;
-    -moz-appearance: none;
     appearance: none;
     background-color: white;
     border: 1px solid black;
@@ -35,12 +33,11 @@
     margin-right: 5px;
   }
   
-  .custom-checkbox::before {
+  .checkbox::before {
     content: "";
     position: absolute;
     top: 30%;
     left: 25%;
-    transform: translate(-50%, -50%);
     width: 8px;
     height: 4px;
     border: 2px solid white;
@@ -51,16 +48,17 @@
     transform: rotate(-45deg);
   }
   
-  .custom-checkbox:checked::before {
+  .checkbox:checked::before {
     opacity: 1;
   }
-  .custom-checkbox:checked{
+  .checkbox:checked{
     background-color: #ee615a;
     border: 0px;
   }
-  .custom-checkbox:disabled{
+  .checkbox:disabled{
     background-color: #c8c6c4;
     border: 0px;
+    cursor: not-allowed;
   }
   .labelOption{
     margin-right: 5px;

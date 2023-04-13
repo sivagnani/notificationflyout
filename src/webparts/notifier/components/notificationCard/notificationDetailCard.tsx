@@ -2,10 +2,11 @@ import * as React from "react";
 import "./notificationDetailCard.css";
 import { Icon } from 'office-ui-fabric-react';
 import { INotificationCardProps, INotificationCardState } from "./INotificationDetailCard";
+import styles from './notificationDetailCard.module.scss';
+
 export default class NotificationDetailCard extends React.Component<INotificationCardProps, INotificationCardState>{
     convertDate(dateStr:string) {
         const date = new Date(dateStr);
-
         const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
             "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
         ];
@@ -22,15 +23,15 @@ export default class NotificationDetailCard extends React.Component<INotificatio
     }
     render(): React.ReactNode {
         return (
-            <div className="notificationCard">
-                <div className="notificationDetails" onClick={this.props.onRead}>
-                    <Icon className="statusIcon" iconName={this.props.notification.IsRead?"Read":"Mail"} />
-                    <div className="notificationInfo">
-                        <p className="notificationSubject">{this.props.notification.NotificationSubject}</p>
-                        <p className="notificationTime">{this.convertDate(this.props.notification.Created)}</p>
+            <div className={`${styles.notificationCard}`}>
+                <div className={`${styles.notificationDetails}`} onClick={this.props.onRead}>
+                    <Icon className={`${styles.statusIcon}`} iconName={this.props.notification.IsRead?"Read":"Mail"} />
+                    <div className={`${styles.notificationInfo}`}>
+                        <p className={`${styles.notificationSubject}`}>{this.props.notification.NotificationSubject}</p>
+                        <p className={`${styles.notificationTime}`}>{this.convertDate(this.props.notification.Created)}</p>
                     </div>
                 </div>
-                <Icon className="notificationClose" iconName="ChromeClose" onClick={this.props.onNotificationClose} />
+                <div><Icon className={`${styles.notificationClose}`} iconName="ChromeClose"  onClick={this.props.onNotificationClose} /></div>
             </div>
         );
     }

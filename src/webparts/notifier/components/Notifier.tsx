@@ -1,5 +1,4 @@
 import * as React from 'react';
-// import styles from './Notifier.module.scss';
 import { INotifierProps, INotifierState } from './INotifier';
 import NotificationTrayHeader from './notificationFlyoutHeader/notificationTrayHeader';
 import NotificationPanel from './noficationPanel/notificationPanel';
@@ -7,7 +6,7 @@ import Services from '../services/service';
 import { Panel, PanelType } from 'office-ui-fabric-react';
 import styles from './Notifier.module.scss';
 import NotificationPreferencePanel from './notificationPreferencesPanel/notificationsPreferencePanel';
-// import { escape } from '@microsoft/sp-lodash-subset';
+
 
 export default class Notifier extends React.Component<INotifierProps, INotifierState> {
   service = new Services;
@@ -15,68 +14,80 @@ export default class Notifier extends React.Component<INotifierProps, INotifierS
     super(props);
     this.state = {
       isPreferences: false,
-      isPanelOpen: true,
-      notifications:[]
+      isPanelOpen: false,
+      notifications: []
     }
   }
   componentDidMount(): void {
     this.service.getNewNotifications().then(
-      (newNotifications)=>{
+      (newNotifications) => {
         this.setState({
-          notifications:newNotifications
+          notifications: newNotifications
         })
-    })
+      })
   }
-  getNotifications(){
+  getNotifications():void {
     this.service.getNewNotifications().then(
-      (newNotifications)=>{
+      (newNotifications) => {
         this.setState({
-          notifications:newNotifications
+          notifications: newNotifications
         })
-    })
+      })
   }
-  changePreferencesNavigation(): void {
+  togglePreferences(): void {
     this.setState({
       isPreferences: !this.state.isPreferences,
     });
   }
-  dismissNotifications(){
-    this.service.setAllNotificationsRead().then((status:boolean)=>
-    status && this.setState({
-      notifications:[],
-    }))
+  dismissNotifications():void {
+    this.service.setAllNotificationsRead().then((status: boolean) =>
+      status && this.setState({
+        notifications: [],
+      }))
   }
-
-  makeNotificationRead(notificationId:number){
-    let allNotifications=[...this.state.notifications];
-    allNotifications.filter((notification)=>notification.Id===notificationId).map((notification)=>notification.IsRead=true);
+  makeNotificationRead(notificationId: number) {
+    let allNotifications = [...this.state.notifications];
+    allNotifications.filter((notification) => notification.Id === notificationId).map((notification) => notification.IsRead = true);
     this.setState({
-      notifications:allNotifications,
+      notifications: allNotifications,
     })
   }
-  updateNotifications(){
-    this.service.updateNotificationsStatus(this.state.notifications).then((status)=>status&&this.getNotifications());
+  updateNotifications() {
+    this.service.updateNotificationsStatus(this.state.notifications).then((status) => status && this.getNotifications());
   }
-  closePanel():void{
+  closeNotification(notificationId: number) {
+    this.service.updateNotificationStatusAndGetNewNotification(notificationId).then(
+      (newNotificaion) => {
+        let updatedNotifications = this.state.notifications.filter((notification)=>notification.Id!==notificationId);
+        (newNotificaion[7]) && updatedNotifications.push(newNotificaion[7]);
+          this.setState(
+            {
+              notifications: updatedNotifications,
+            }
+          )
+      });
+  }
+  closePanel(): void {
     this.setState({
-      isPanelOpen:false
+      isPanelOpen: false
     })
+  }
+  openPanel():void{
+    this.setState({
+      isPanelOpen:true
+    });
+    console.log("yesh");    
   }
   public render(): React.ReactElement<INotifierProps> {
-    const panelStyles = {
-      content: {
-        padding: 0,
-        margin: 0
-      }
-    };
     return (
       <div>
-        <Panel customWidth='500px' type={PanelType.custom} isOpen={this.state.isPanelOpen} styles={panelStyles} hasCloseButton={false} >
-          <div className={styles.notificationPane}>
-            <NotificationTrayHeader isNotificationTray={!this.state.isPreferences} onPreferenceClick={() => this.changePreferencesNavigation()} onCloseClick={()=>this.closePanel()} onDismissAll={()=>this.dismissNotifications()}/>
+        <button onClick={()=>this.openPanel()}>open notifcations</button>
+        <Panel customWidth='500px' type={PanelType.custom} isOpen={this.state.isPanelOpen} className={`${styles.panelStyle}`} hasCloseButton={false} >
+          <div className={`${styles.notificationPane}`}>
+            <NotificationTrayHeader isNotificationTray={!this.state.isPreferences} togglePreferences={() => this.togglePreferences()} onClose={() => this.closePanel()} onDismiss={() => this.dismissNotifications()} />
             {!this.state.isPreferences
-            ?<NotificationPanel newNotifications={this.state.notifications}  onNotificationRead={(notificationId:number)=>this.makeNotificationRead(notificationId)} updateNotifications={()=>this.getNotifications()} updateNotificationStatus={()=>this.updateNotifications()}/>
-            :<NotificationPreferencePanel onCancel={()=>this.closePanel()}/>}
+              ? <NotificationPanel newNotifications={this.state.notifications} onNotificationClose={(notificationId: number) => this.closeNotification(notificationId)} onNotificationRead={(notificationId: number) => this.makeNotificationRead(notificationId)} updateNotifications={() => this.getNotifications()} updateNotificationsStatus={() => this.updateNotifications()} />
+              : <NotificationPreferencePanel onCancel={() => this.closePanel()} />}
           </div>
         </Panel>
       </div>

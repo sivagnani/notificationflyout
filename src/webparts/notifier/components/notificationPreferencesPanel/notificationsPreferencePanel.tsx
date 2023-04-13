@@ -3,13 +3,15 @@ import "./notificationsPreferencePanel.css";
 import { INotificationsPreferencePanelProps, INotificationsPreferencePanelState } from "./INotificationsPreferencePanel";
 import Services from "../../services/service";
 import NotificationPreference from "../notificationPreference/notificationPreference";
+import styles from './notificationsPreferencePanel.module.scss';
+
 export default class NotificationPreferencePanel extends React.Component<INotificationsPreferencePanelProps, INotificationsPreferencePanelState>{
     service = new Services();
     constructor(props: INotificationsPreferencePanelProps) {
         super(props);
         this.state = {
             notificationOptions: [],
-            initialNotifications: [],
+            initialPreferences: [],
             didPreferenceChange: false,
         }
     }
@@ -17,7 +19,7 @@ export default class NotificationPreferencePanel extends React.Component<INotifi
         this.service.getNotificationPreferences().then(preferences => {
             this.setState({
                 notificationOptions: preferences,
-                initialNotifications: preferences,
+                initialPreferences: preferences,
             }
             );
         })
@@ -30,7 +32,7 @@ export default class NotificationPreferencePanel extends React.Component<INotifi
             })
         this.setState({
             notificationOptions: allPreferences,
-            didPreferenceChange: (JSON.stringify(this.state.initialNotifications)!==JSON.stringify(allPreferences)),
+            didPreferenceChange: (JSON.stringify(this.state.initialPreferences)!==JSON.stringify(allPreferences)),
         });
     }
     savePreferences(): void {
@@ -43,25 +45,25 @@ export default class NotificationPreferencePanel extends React.Component<INotifi
     }
     render(): React.ReactNode {
         return (
-            <div className="notificationPreferences">
-                <div className="allPreferences">
-                    <div className="marginBottom">
-                        <p className="myContent">My Content</p>
+            <div className={`${styles.notificationPreferences}`}>
+                <div className={`${styles.allPreferences}`}>
+                    <div className={`${styles.marginBottom}`}>
+                        <p className={`${styles.myContent}`}>My Content</p>
                     </div>
-                    <div className="marginBottom">
-                        <p className="option">Send me notifications when:</p>
+                    <div className={`${styles.marginBottom}`}>
+                        <p className={`${styles.option}`}>Send me notifications when:</p>
                     </div>
                     {
                         this.state.notificationOptions
                             .filter((option) => option.NotificationOption === "My Content")
                             .map((option) => <NotificationPreference preference={option} onPrefenceChange={(id: number, type: string) => this.changePreference(id, type)} />)
                     }
-                    <hr className="marginBottom" />
-                    <div className="marginBottom">
-                        <p className="myContent">Social</p>
+                    <hr className={`${styles.marginBottom}`} />
+                    <div className={`${styles.marginBottom}`}>
+                        <p className={`${styles.myContent}`}>Social</p>
                     </div>
-                    <div className="marginBottom">
-                        <p className="option">Send me notifications when:</p>
+                    <div className={`${styles.marginBottom}`}>
+                        <p className={`${styles.option}`}>Send me notifications when:</p>
                     </div>
                     {
                         this.state.notificationOptions
@@ -69,9 +71,9 @@ export default class NotificationPreferencePanel extends React.Component<INotifi
                             .map((option) => <NotificationPreference preference={option} onPrefenceChange={(id: number, type: string) => this.changePreference(id, type)} />)
                     }
                 </div>
-                <div className="footer">
-                    <button className={(this.state.didPreferenceChange) ? "footerButton save" : "footerButton saveDisabled"} disabled={!this.state.didPreferenceChange} onClick={()=>this.savePreferences()}>Save</button>
-                    <button className="footerButton cancel" onClick={this.props.onCancel}>Cancel</button>
+                <div className={`${styles.footer}`}>
+                    <button className={(this.state.didPreferenceChange) ? `${styles.footerButton} ${styles.save}` : `${styles.footerButton} ${styles.saveDisabled}`} disabled={!this.state.didPreferenceChange} onClick={()=>this.savePreferences()}>Save</button>
+                    <button className={`${styles.footerButton} ${styles.cancel}`} onClick={this.props.onCancel}>Cancel</button>
                 </div>
             </div>
         );

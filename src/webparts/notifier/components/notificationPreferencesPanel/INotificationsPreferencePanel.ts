@@ -5,6 +5,6 @@ export interface INotificationsPreferencePanelProps{
 }
 export interface INotificationsPreferencePanelState{
     notificationOptions:IActiveNoticationPrefence[];
-    initialNotifications:IActiveNoticationPrefence[];
+    initialPreferences:IActiveNoticationPrefence[];
     didPreferenceChange:boolean;
 }

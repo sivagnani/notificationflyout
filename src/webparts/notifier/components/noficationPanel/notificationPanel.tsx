@@ -3,6 +3,7 @@ import "./notificationPanel.css";
 import { INotificationPanelProps, INotificationPanelState } from "./INotificationPanel";
 import Services from "../../services/service";
 import NotificationDetailCard from "../notificationCard/notificationDetailCard";
+import styles from './notificationPanel.module.scss';
 export default class NotificationPanel extends React.Component<INotificationPanelProps, INotificationPanelState>{
     service = new Services();
     constructor(props: INotificationPanelProps) {
@@ -14,33 +15,28 @@ export default class NotificationPanel extends React.Component<INotificationPane
         this.props.updateNotifications();
     }
     componentWillUnmount(): void {
-        this.props.updateNotificationStatus();
+        this.props.updateNotificationsStatus();
     }
     closeNotification(notificationId:number){
-        this.props.onNotificationRead(notificationId);
-        this.props.updateNotificationStatus();
+        this.props.onNotificationClose(notificationId);
     }
     render(): React.ReactNode {
         return (
-                this.props.newNotifications.length === 0 ?
-                    <div className="notificationPanel noNotificationsAvailable">
-                        <div className="panelHeader">
-                            <p className="notificationLink">See older notifications</p>
+                    <div className={this.props.newNotifications.length === 0 ?`${styles.notificationPanel} ${styles.noNotificationsAvailable}`:`${styles.notificationPanel} ${styles.notificationsAvailable}`}>
+                        <div className={`${styles.panelHeader}`}>
+                            <p className={`${styles.notificationLink}`}>{this.props.newNotifications.length === 0 ? "See older notifications":"See all"}</p>
                         </div>
-                        <div className="noNotifications">
+                        {this.props.newNotifications.length === 0 ?
+                        <div className={`${styles.noNotifications}`}>
                             <div>
-                                <img className="errorImage" src={require("../../assets/notepadImage.png")} />
-                                <p className="message">No new notifications to show</p>
-                                <p className="notificationLink">See older notifications</p>
+                                <img className={`${styles.errorImage}`} src={require("../../assets/notepadImage.png")} />
+                                <p className={`${styles.message}`}>No new notifications to show</p>
+                                <p className={`${styles.notificationLink}`}>See older notifications</p>
                             </div>
                         </div>
-                    </div>
-                    :
-                    <div className="notificationPanel notificationsAvailable">
-                        <div className="panelHeader">
-                            <p className="notificationLink">See all</p>
-                        </div>
-                        {this.props.newNotifications.map((notificationDetails)=><NotificationDetailCard onRead={()=>this.props.onNotificationRead(notificationDetails.Id)} notification={notificationDetails} onNotificationClose={()=>this.closeNotification(notificationDetails.Id)}/>)}
+                        :
+                        (this.props.newNotifications.map((notificationDetails)=><NotificationDetailCard onRead={()=>this.props.onNotificationRead(notificationDetails.Id)} notification={notificationDetails} onNotificationClose={()=>this.closeNotification(notificationDetails.Id)}/>))
+                        }
                     </div>
         );
     }

@@ -1,8 +1,8 @@
 export interface INotificationTrayHeaderProps{
     isNotificationTray:boolean;
-    onPreferenceClick:()=>void;
-    onCloseClick:()=>void;
-    onDismissAll:()=>void;
+    togglePreferences:()=>void;
+    onClose:()=>void;
+    onDismiss:()=>void;
 }
 export interface INotificationTrayHeaderState{
     

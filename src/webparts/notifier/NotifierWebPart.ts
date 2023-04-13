@@ -21,7 +21,7 @@ export default class NotifierWebPart extends BaseClientSideWebPart<INotifierWebP
 
   public render(): void {
     const element: React.ReactElement<INotifierProps> = React.createElement(
-      Notifier);
+      Notifier,{});
 
     ReactDom.render(element, this.domElement);
   }

@@ -1,9 +1,7 @@
 .notificationPreferences{
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
-    font-weight: 600;
     display: flex;
     flex-direction: column;
-    height: calc(100%-110px);
+    height: calc(100% - 110px);
 }
 .marginBottom{
     margin-bottom: 20px;
@@ -17,7 +15,6 @@
     font-size: 18px;
 }
 .footer{
-    height: 60px;
     padding: 10px;
     display: flex;
     justify-content: end;
@@ -25,7 +22,7 @@
     align-items: center;
 }
 .footerButton{
-    width: 80px;
+    width: 18%;
     margin-right: 10px;
     height: 30px;
     border: 1px solid #989898;
