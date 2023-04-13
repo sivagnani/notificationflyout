@@ -1,21 +1,21 @@
 .preferences{
-    padding-bottom: 20px;
+    padding: 0px 0px 20px 0px;
     font-weight: 400;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width:180px;
+    width:40%;
 }
 .title{
     color:#737985 ;
     font-size: 14px;
-    padding-bottom: 15px;
+    padding: 0px 0px 15px 0px;
 }
 .preferenceTitle{
     display: flex;
 }
 .noAccess{
-    margin-left: 15px;
+    margin: 0px 0px 0px 15px;
 }
 .notHaveAccess{
     color: #c8c6c4;
@@ -30,7 +30,7 @@
     border-radius: 3px;
     outline: none;
     cursor: pointer;
-    margin-right: 5px;
+    margin: 0px 5px 0px 0px;
   }
   
   .checkbox::before {
@@ -61,7 +61,7 @@
     cursor: not-allowed;
   }
   .labelOption{
-    margin-right: 5px;
+    margin: 0px 5px 0px 0px;
     font-size: 16px;
   }
   .optionContainer{
